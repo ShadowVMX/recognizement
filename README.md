@@ -1,6 +1,8 @@
 ![scan](https://user-images.githubusercontent.com/92258683/160210905-2c764dac-0da4-483f-b621-cc8d96724d8e.jpg)
 
+# Herramienta para PENTESTING
 
+No me hago responsable de uso indebido.
 
 # recognizement
 Herramienta que automatiza completamente el proceso de escaneo.
