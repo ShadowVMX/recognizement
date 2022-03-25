@@ -1,0 +1,248 @@
+#!/bin/bash
+#Análisis completo del target
+#Script para facilitar análisis.
+
+trap exity EXIT
+
+function exity(){
+	echo ""
+	echo " [*] Aborting [*] "
+	echo " "
+}
+
+#rcngzd <ip> 
+
+#Variable para settear el root.
+ktb=`whoami`
+
+if [[ $ktb != "root" ]] ; then
+	echo " "
+	echo "$(tput setaf 1)[!] NO ROOT ABORTING [!]"
+	echo " "
+	exit
+fi
+
+#------------------------------------------
+#
+#Reconocimiento de parámetro <ip>
+
+if [[ -z $1 ]] ; then
+	echo " "
+	echo "rcngz <ip>"
+	echo " "
+	exit
+fi
+
+#------------------------------------------
+#
+#Comprobación de Whichsystem && extractports
+echo "$(tput setaf 1) "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+echo "Recognizement Process"
+echo " "
+echo "Version 1.0.5"
+echo " "
+echo "rcngzd made by ShadowVMX --> https://github.com/ShadowVMX"
+echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo "$(tput setaf 2) "
+sleep 3
+
+ls -l /usr/bin/Whichsystem &> /dev/null
+
+if [[ $? == 0 ]] ; then 
+	echo " "
+	echo "[!]Whichsystem ya está en su sistema, abortando descarga.[!]"
+	echo " "
+else
+	git clone https://github.com/ShadowVMX/Whichsystem.git &> /dev/null
+	chmod +x Whichsystem/Whichsystem 
+	cp Whichsystem/Whichsystem /usr/bin/
+
+	echo " "
+	echo "[!] Whichsystem descargado en su sistema.[!]"
+	echo " "
+	echo "[!]Podrá usar la herramienta directamente en su sistema --> Whichsystem <ip>"
+	echo " "
+	echo "ctrl_c para cerrar cuando vea el código."
+	echo " "
+	xterm -e zsh -c "nano /usr/bin/Whichsystem"
+fi
+
+#Quien quiera tenerlo en la bashrc que descomente, si lo quiere en la zshrc modificar y descomentar.
+
+#cat /root/.bashrc | grep "extractports" &> /dev/null
+
+#if [[ $? = "0" ]] ; then
+#	echo " "
+#	echo "[!]extractports ya está descargado en su sistema.[!]"
+#else
+#	git clone https://github.com/ShadowVMX/extractports.git &> /dev/null
+#	echo " "
+#	cat extractports/extractports >> /root/.bashrc
+#	echo "[!] extractports descargándose en el sistema. [!]"
+#	echo " "
+	sleep 2
+	echo "[+++] Actualizando base de datos [+++]"
+	echo " "
+	updatedb
+	echo "[!] Completado [!]"
+	echo " "
+#fi
+
+#---------------------------------------------------------------
+#
+#Uso herramienta Whichsystem
+#
+
+echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+Whichsystem $1
+
+echo " "
+echo "[!]Reporte de S.O objetivo completo.[!]"
+echo " "
+sleep 2
+
+echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+sleep 1
+
+
+#Usando nmap para generar allports 1 y 2 según análisis exhaustivo.
+echo " "
+echo "[X] Escaneando [X]"
+nmap -sS --min-rate 5000 -n $1 -oG allports &> /dev/null
+nmap -sS --min-rate 5000 -n $1 -oX allports.xml &> /dev/null
+xsltproc allports.xml -o weburl.html &> /dev/null
+
+#Pasar el index.html a la carpeta actual y después pasarla de nuevo.
+
+service apache2 start &> /dev/null
+
+cp /var/www/html/index.html . &> /dev/null
+cp weburl.html /var/www/html/index.html &> /dev/null
+
+
+#Avisar de abrir la URL
+
+WebS=`hostname -I`
+
+echo " "
+echo "[!]Abra el navegador --> http://$WebS"
+echo " "
+
+#Dar ventaja al usuario para que procese.
+cat allports | grep "23/open/tcp//telnet//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] telnet --> try telnet <ip> [!]"
+        echo " "
+fi
+
+cat allports | grep "80/open/tcp//http//" &> /dev/null
+if [[ $? = 0 ]] ; then
+	echo " "
+	echo "[!] url --> http://$1 [!]"
+	echo " "
+fi
+
+cat allports | grep "21/open/tcp//ftp//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] ftp --> try anonymous login [!]"
+        echo " "
+fi
+
+cat allports | grep "445/open/tcp//microsoft-ds//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] smb --> try smbclient -L <ip> | crackmapexec | smbmap | evil-winrm | pkexec [!]"
+        echo " "
+fi
+
+
+#Continua el escaneo
+
+nmap -p"-" --open -T5 -n $1 -oG allports2 &> /dev/null 
+echo " "
+nmap -sU --min-rate 5000 -n $1 -oG allportsUDP &> /dev/null
+echo "[!]Archivos allports generados.[!]"
+
+echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+
+#Crear el archivo targeted
+
+sleep 2
+
+nmap -sCV --min-rate 5000 -n $1 -oN targeted &> /dev/null
+
+echo " "
+echo "[!]Archivo targeted generado.[!]"
+echo " "
+sleep 2
+
+echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+
+#Usamos el RKT para el análisis URL --> web
+
+RKT=`cat allports | tr " " "\n" | grep "^80" | cut -d "/" -f1 | head -1`
+
+if [[ $RKT = 80 ]] ; then
+	whatweb http://$1/ > kyndofweb
+	echo " "
+	echo "[!]Kyndofweb generado.[!]"
+	echo " "
+	echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "
+	sleep 2
+	echo " "
+	echo "[!]Fuerza bruta contra subdirectorios.[!]"
+	echo " "
+	gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://$1 > subdirect 2> /dev/null
+	
+	echo " "
+echo "___________________________________________________________________"
+echo "___________________________________________________________________"
+echo " "	
+
+	echo "[!]Completado.[!]"
+	echo " "
+
+else
+	echo "[!]No web on target.[!]"
+	echo " "
+fi
+
+#Borramos el ruido.
+
+rm -f weburl.html &> /dev/null
+service apache2 stop &> /dev/null
+rm -rf Whichsystem/ &> /dev/null
+rm -rf extractports/ &> /dev/null
+cp index.html /var/www/html/index.html &> /dev/null
+rm -f index.html &> /dev/null
+rm -f allports.xml &> /dev/null
+
+#Aviso final
+
+echo " "
+echo "[!] Todo el reporte podrá ser visualizado en la carpeta actual con ls -l [!]"
+echo " "
+
+#-----------------FIN-------------------#
