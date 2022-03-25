@@ -40,7 +40,8 @@ else
         apt install -y smbmap
 fi
 
-cp rcngzd /usr/bin/
+cp rcngzd /usr/bin
+chmod +x /usr/bin/rcngzd
 
 sleep 2
 echo " "
