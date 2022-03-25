@@ -2,6 +2,15 @@
 #
 # Installation.
 
+ktb=`whoami`
+
+if [[ $ktb != "root" ]] ; then
+	echo " "
+	echo "$(tput setaf 1)[!] NO ROOT ABORTING [!]"
+	echo " "
+	exit
+fi
+
 echo " "
 
 ls -l /usr/bin/gobuster &> /dev/null
