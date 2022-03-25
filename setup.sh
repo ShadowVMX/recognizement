@@ -50,3 +50,6 @@ echo "[!] rcngzd --> Instalado en el sistema con éxito. [!]"
 echo " "
 echo "[!] rcngzd <ip> [!]"
 echo " "
+
+
+chmod +x rcngzd
