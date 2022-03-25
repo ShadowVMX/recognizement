@@ -51,5 +51,3 @@ echo " "
 echo "[!] rcngzd <ip> [!]"
 echo " "
 
-
-chmod +x rcngzd
