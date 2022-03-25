@@ -88,7 +88,7 @@ fi
 	sleep 2
 	echo "[+++] Actualizando base de datos [+++]"
 	echo " "
-	updatedb
+	updatedb &> /dev/null
 	echo "[!] Completado [!]"
 	echo " "
 #fi
