@@ -10,7 +10,7 @@ chmod +x setup.sh
 
 # EXECUTION
 
-rcngzd <ip>
+rcngzd + ip
   
   
 
