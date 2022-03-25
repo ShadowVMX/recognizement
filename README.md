@@ -11,5 +11,6 @@ chmod +x setup.sh
 
 rcngzd + ip
   
-  
+# APORTES 
+juanmacoello94@gmail.com
 
