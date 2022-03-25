@@ -13,4 +13,4 @@ chmod +x setup.sh
 rcngzd <ip>
   
   
-  #ENJOY#
+
