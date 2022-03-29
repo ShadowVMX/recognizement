@@ -22,6 +22,7 @@ Herramienta que automatiza completamente el proceso de escaneo.
 
 # INSTALLATION
 chmod +x setup.sh
+
 ./setup.sh
 
 
