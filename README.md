@@ -15,7 +15,7 @@ Herramienta que automatiza completamente el proceso de escaneo.
 
 4- Extraerá el rango de puertos tanto TCP como UDP y podrás visualizarlo en en http que te soltará el reporte.
 
-5- Te recomendará cierpos pasos para ftp, smb y http.
+5- Te recomendará ciertos pasos para ftp, smb y http.
 
 6- Ejercerá F.bruta a los subdirectorios y los mostrará en archivos salientes.
 
