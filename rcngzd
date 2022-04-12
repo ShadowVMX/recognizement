@@ -6,7 +6,7 @@ trap exity EXIT
 
 function exity(){
 	echo ""
-	echo " [*] Aborting [*] "
+	echo "[*] Aborting [*]"
 	echo " "
 }
 
@@ -40,11 +40,11 @@ echo "$(tput setaf 1) "
 echo "___________________________________________________________________"
 echo "___________________________________________________________________"
 echo " "
-echo "Recognizement Process"
+echo "R3c0gn1z3m3nt Pr0c3ss"
 echo " "
-echo "Version 1.0.5"
+echo "V3rs10n 1.1.5"
 echo " "
-echo "rcngzd made by ShadowVMX --> https://github.com/ShadowVMX"
+echo "rcngzd made by [ShadowVMX] --> https://github.com/ShadowVMX"
 echo " "
 echo "___________________________________________________________________"
 echo "___________________________________________________________________"
@@ -85,12 +85,12 @@ fi
 #	cat extractports/extractports >> /root/.bashrc
 #	echo "[!] extractports descargándose en el sistema. [!]"
 #	echo " "
-	sleep 2
-	echo "[+++] Actualizando base de datos [+++]"
-	echo " "
-	updatedb &> /dev/null
-	echo "[!] Completado [!]"
-	echo " "
+#	sleep 2
+#	echo "[+++] Actualizando base de datos [+++]"
+#	echo " "
+#	updatedb &> /dev/null
+#	echo "[!] Completado [!]"
+#	echo " "
 #fi
 
 #---------------------------------------------------------------
@@ -143,7 +143,7 @@ echo " "
 cat allports | grep "23/open/tcp//telnet//" &> /dev/null
 if [[ $? = 0 ]] ; then
         echo " "
-        echo "[!] telnet --> try telnet <ip> [!]"
+        echo "[!] t3ln3t --> try t3ln3t <ip> [!]"
         echo " "
 fi
 
@@ -157,16 +157,46 @@ fi
 cat allports | grep "21/open/tcp//ftp//" &> /dev/null
 if [[ $? = 0 ]] ; then
         echo " "
-        echo "[!] ftp --> try anonymous login [!]"
+        echo "[!] ftp --> try 4n0nym0us l0gin [!]"
         echo " "
 fi
 
 cat allports | grep "445/open/tcp//microsoft-ds//" &> /dev/null
 if [[ $? = 0 ]] ; then
         echo " "
-        echo "[!] smb --> try smbclient -L <ip> | crackmapexec | smbmap | evil-winrm | pkexec [!]"
+        echo "[!] smb --> try smbm4p -H <ip> | smbcli3nt -L <ip> | cr4ckm4p3x3c | smbm4p | 3vil-winrm | pk3x3c [!]"
         echo " "
 fi
+
+cat allports | grep "3306/open/tcp//ftp//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] mysql (3306) --> mysql -u 'username' -h <ip> -p'passw0rd' [!]"
+        echo " "
+fi
+
+
+cat allports | grep "8080/open/tcp//ftp//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] http://$1:8080 --> 0p3n URL [!]"
+        echo " "
+fi
+
+cat allports | grep "22/open/tcp//ftp//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] ssh --> N0thing y0u c4n d0 ... 4n0w. [!]"
+        echo " "
+fi
+
+cat allports | grep "1337/open/tcp//ftp//" &> /dev/null
+if [[ $? = 0 ]] ; then
+        echo " "
+        echo "[!] B4ckd00r [!]"
+        echo " "
+fi
+
 
 
 #Continua el escaneo
