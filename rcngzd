@@ -136,7 +136,7 @@ cp weburl.html /var/www/html/index.html &> /dev/null
 WebS=`hostname -I`
 
 echo " "
-echo "[!]Abra el navegador --> http://$WebS"
+echo "[!]Abra el navegador --> http://localhost"
 echo " "
 
 #Dar ventaja al usuario para que procese.
