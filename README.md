@@ -30,6 +30,24 @@ Herramienta que automatiza completamente el proceso de escaneo.
 Si tienes una WEB creada en el index.html, en caso de cortar a mitad del escaneo, podrás borrar el index, es decir, NO detengas el escaneo puesto que reportará las evidencias a través de tu navegador --> localhost. Todo el proceso lo revertirá y te devolverá tu index.html anterior pero, en caso de cortar el escaneo, podrás romper tu web anterior.
 
 
+
+-------------------------------------------------------
+----- El script tiene bastantes líneas comentadas -----
+-------------------------------------------------------
+
+1- Tiene comentada la descarga de extractports para evitar que se os duplique (ésta iría en la bashrc), en caso de modificar o querer tenerla ahí, descomentar o usar a vuestro antojo.
+
+2- Tenéis el escaneo de -p- --open descomentado, en mi caso, está comentado puesto que suele gastar bastante tiempo y no necesito tanto (al principio).
+
+3- La función Whichsystem está redactada en BASH por mi, en caso de que queráis tenerla, lo dejáis actuar puesto que está descomentada. Podréis ver el código que se os genera en la apertura de la zsh.
+
+4- Por último, tengo comentado el "updatedb" porque ya no necesito actualizar nada, en caso de que se os instale el extractports (s4vitar) sí necesitaréis de un updatedb para evitar incompatibilidades en la .bashrc o .zshrc.
+
+
+-------------------------------------------------------
+------------------------- FIN -------------------------
+-------------------------------------------------------
+
 # INSTALLATION
 chmod +x setup.sh
 
