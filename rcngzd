@@ -15,7 +15,7 @@ function exity(){
 #Variable para settear el root.
 ktb=`whoami`
 
-if [[ $ktb != "root" ]] ; then
+if [[ $EUID != 0 ]] ; then
 	echo " "
 	echo "$(tput setaf 1)[!] NO ROOT ABORTING [!]"
 	echo " "
