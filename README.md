@@ -63,8 +63,9 @@ rcngzd + ip
 # APORTES
 Cualquier aporte, ayuda, complementación podréis escribirme --> shadowvmx@gmail.com
 
+## _________________________________________________________________________________
 
-## Versión ACTUAL [1.6.5]
+# Versión ACTUAL [1.6.5]
 
 1- Se mejora rendimiento de la herramienta.
 
