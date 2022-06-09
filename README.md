@@ -63,3 +63,18 @@ rcngzd + ip
 # APORTES
 Cualquier aporte, ayuda, complementación podréis escribirme --> shadowvmx@gmail.com
 
+
+## Versión ACTUAL [1.6.5]
+
+1- Se mejora rendimiento de la herramienta.
+
+2- Se mejora la eficiencia de la misma tanto funcional como visual.
+
+3- Lleva a cabo la instalación de Extractports directamente en el sistema.
+
+4- Parsea de forma más limpia toda la información.
+
+5- Genera códigos/opciones de ayuda para el usuario en cuanto a opciones de ataque se trata.
+
+
+
