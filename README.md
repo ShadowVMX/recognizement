@@ -63,7 +63,7 @@ rcngzd + ip
 # APORTES
 Cualquier aporte, ayuda, complementación podréis escribirme --> shadowvmx@gmail.com
 
-## _________________________________________________________________________________
+## _________________________________________________
 
 # Versión ACTUAL [1.6.5]
 
