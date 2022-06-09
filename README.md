@@ -65,7 +65,7 @@ Cualquier aporte, ayuda, complementación podréis escribirme --> shadowvmx@gmai
 
 ## _________________________________________________
 
-# Versión ACTUAL [1.6.5]
+# Versión ACTUAL [1.6.5] 09/06/2022.
 
 1- Se mejora rendimiento de la herramienta.
 
