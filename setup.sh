@@ -49,10 +49,22 @@ else
         apt install -y smbmap
 fi
 
+ls -l /usr/bin/ftp &> /dev/null
+
+if [[ $? = 0 ]] ; then
+        echo "ftp --> [V]"
+else
+        echo "ftp --> [X]"
+        sleep 2
+        apt install -y ftp
+fi
+
+
 cp rcngzd /usr/bin
 chmod +x /usr/bin/rcngzd
 
 sleep 2
+
 echo " "
 echo "[!] Elementos básicos y principales instalados, el resto deben de ser instalados manualmente. [!]"
 echo " "
@@ -60,4 +72,3 @@ echo "[!] rcngzd --> Instalado en el sistema con éxito. [!]"
 echo " "
 echo "[!] rcngzd <ip> [!]"
 echo " "
-
