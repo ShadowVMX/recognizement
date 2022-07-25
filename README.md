@@ -77,5 +77,8 @@ Cualquier aporte, ayuda, complementación podréis escribirme --> shadowvmx@gmai
 
 5- Genera códigos/opciones de ayuda para el usuario en cuanto a opciones de ataque se trata.
 
+6- Se descomentan las líneas innecesarias y se eliminan, de esta formma, se instalan de forma eficiente las herramientas sin usar la bashrc o la zshrc, es decir, van directamente al sistema tanto Whichsystem como Extactports.
+
+
 
 
